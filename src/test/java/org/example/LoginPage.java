@@ -7,8 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    public WebDriver driver;
-    public LoginPage(WebDriver driver) {
+    protected WebDriver driver;
+
+    protected LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver; }
 
@@ -21,12 +22,7 @@ public class LoginPage {
     @FindBy(xpath = "//*[contains(@id, 'passp-field-passwd')]")
     private WebElement passwordField;
 
-    public void inputLogin(String login) {
-        loginField.sendKeys(login); }
-
-    public void inputPasswd(String password) {
-        passwordField.sendKeys(password); }
-
-    public void clickLoginBtn() {
-        loginBtn.click(); }
+    public void inputLogin(String login) { loginField.sendKeys(login); }
+    public void inputPasswd(String password) { passwordField.sendKeys(password); }
+    public void clickLoginBtn() { loginBtn.click(); }
 }
