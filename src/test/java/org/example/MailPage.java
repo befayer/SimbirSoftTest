@@ -15,7 +15,7 @@ public class MailPage {
         this.driver = driver; }
 
     //кнопка "Войти"
-    @FindBy(xpath = "//*[contains(@class, 'HeadBanner-Button-Enter with-shadow')]")
+    @FindBy(xpath = "//*[contains(@class, 'HeadBanner-Button-Enter')]")
     private WebElement loginBtn;
 
     //кнопка "Написать письмо"
@@ -68,7 +68,7 @@ public class MailPage {
     }
 
     public void inputTheme(){
-        driver.findElement(By.xpath("//*[contains(@class, 'composeTextField ComposeSubject-TextField')]")).sendKeys
+        driver.findElement(By.xpath("//*[contains(@class, 'ComposeSubject-TextField')]")).sendKeys
                 ("Simbirsoft Тестовое задание. Калинин");
     }
 
