@@ -51,6 +51,11 @@ public class LoginTest {
         //считаем кол-во писем с требуемой темой "Simbirsoft Тестовое задание"
         String countOfMessage = mailPage.getCountMessage();
         Assert.assertNotNull(countOfMessage);
+        //кнопка "Отправленные"
+        mailPage.clickSentMailsBtn();
+        //считаем письма до отправки
+        int countMailsBefore = mailPage.countSentMessage();
+        System.out.println(countMailsBefore);
         //кнопка "Написать письмо"
         mailPage.clickWriteMessageBtn();
         //ввод адреса получателя
@@ -67,8 +72,15 @@ public class LoginTest {
         mailPage.clickSendBtn();
         //кнопка "Отправленные"
         mailPage.clickSentMailsBtn();
+        //здесь нужно подождать
+        //в идеале нужно ожидание
+        //с кнопкой обновления какие-то проблемы, интересно узнать как решить...
+        mailPage.clickUpdateBtn();
+        int countMailsAfter = mailPage.countSentMessage();
+        System.out.println(countMailsAfter);
         //проверяем, отправилось ли письмо
-        Assert.assertEquals("Письмо было отправлено", 1, mailPage.checkSentMessage(countOfMessage));
+        //сейчас проверка работает некорректно
+        Assert.assertEquals("Письмо не было отправлено", countMailsBefore+1, countMailsAfter);
     }
 
     @AfterClass
